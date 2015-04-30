@@ -1,13 +1,58 @@
-// Faça seu exercício neste arquivo
+var btn_rolar = document.getElementById("rolar");
 
-
-// Alguns elementos importantes na página (index.html):
-// #rolar: Botão rolar
-//	 - você deve atribuir um _handler_ de evento a ele para fazer o cálculo da rolagem dos dados
-// #resultado: Elemento cujo conteúdo deve ser uma string com os resultados
-//	 - você deve definir seu conteúdo (.innerHTML) com a string de resultados
-// #recipienteResultados: "Container" do elemento dos resultados: 
-//	 - você deve torná-lo visível removendo a classe "oculto" dele
-// .quantidade: todos os input[type=number] com a quantidade de dados a serem rolados
-// #quantidadeD{4,6,8,10,12,20}: um ID para cada input[type=number] com a quantidade
-
+btn_rolar.addEventListener("click",
+                           function (e) {
+                                "use strict";
+                                var strResultado = "";
+                                var strSoma = "";
+                                var vlResultado = 0;
+                                for (var i = 1; i<=document.getElementById("quantidadeD4").value; i++){
+                                    var numero = Math.ceil(Math.random() * 4);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                for (i = 1; i<=document.getElementById("quantidadeD6").value; i++){
+                                    var numero = Math.ceil(Math.random() * 6);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                for (i = 1; i<=document.getElementById("quantidadeD8").value; i++){
+                                    var numero = Math.ceil(Math.random() * 8);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                for (i = 1; i<=document.getElementById("quantidadeD10").value; i++){
+                                    var numero = Math.ceil(Math.random() * 10);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                for(i = 1; i<=document.getElementById("quantidadeD12").value; i++){
+                                    var numero = Math.ceil(Math.random() * 12);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                for(i = 1; i<=document.getElementById("quantidadeD20").value; i++){
+                                    var numero = Math.ceil(Math.random() * 20);
+                                    vlResultado += numero;
+                                    strResultado += strSoma + numero;
+                                    strSoma = " + ";                                    
+                                }
+                                if(vlResultado > 0)
+                                {                                    
+                                    var resultado = document.createElement("p");
+                                    resultado.innerHTML = strResultado + " = " + vlResultado;
+                                    var divResultado = document.getElementById("resultado");
+                                    divResultado.parentElement.className = divResultado.parentElement.className.replace("oculto","");
+                                    divResultado.appendChild(resultado);
+                                    vlResultado = 0;
+                                    strResultado = "";
+                                    strSoma = "";
+                                }
+                           },
+                           false);
+ 
